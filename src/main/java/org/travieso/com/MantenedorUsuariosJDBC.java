@@ -15,7 +15,13 @@ public class MantenedorUsuariosJDBC {
 
         UserRepository<User> userRepository = new UserRepositoryImpl();
 
-        userRepository.getUsers();
+        System.out.println("================== LIST OF USERS =======================");
+        userRepository.getUsers().forEach(System.out::println);
+
+        System.out.println("================== USER BY ID =======================");
+        System.out.println(userRepository.getUser(5L));
+
+        System.out.println("================== CREATE USER =======================");
 
 
     }

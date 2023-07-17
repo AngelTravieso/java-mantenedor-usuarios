@@ -3,10 +3,7 @@ package org.travieso.com.repositories;
 import org.travieso.com.models.User;
 import org.travieso.com.models.utils.ConnectionBD;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,19 +25,39 @@ public class UserRepositoryImpl implements UserRepository<User> {
                 ) {
 
             while(rs.next()) {
-                System.out.printf("%s \n", rs.getString("username"));
+                User user = createUser(rs);
+                users.add(user);
             }
 
         } catch(SQLException e) {
             e.printStackTrace();
         }
 
-        return null;
+        return users;
     }
 
     @Override
     public User getUser(Long id) {
-        return null;
+        User user = null;
+
+        try(
+                Connection conn = getBDInstance();
+                PreparedStatement stmt = conn.prepareStatement("SELECT * FROM usuarios WHERE id=?")
+                ) {
+
+            stmt.setLong(1, id);
+
+            try(ResultSet rs = stmt.executeQuery()) {
+                if(rs.next()) {
+                    user = createUser(rs);
+                }
+            }
+
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+
+        return user;
     }
 
     @Override
@@ -51,5 +68,14 @@ public class UserRepositoryImpl implements UserRepository<User> {
     @Override
     public void deleteUser(Long id) {
 
+    }
+
+    public User createUser(ResultSet rs) throws SQLException {
+        User user = new User();
+        user.setId(rs.getLong("id"));
+        user.setUsername(rs.getString("username"));
+        user.setPassword(rs.getString("password"));
+        user.setEmail(rs.getString("email"));
+        return user;
     }
 }

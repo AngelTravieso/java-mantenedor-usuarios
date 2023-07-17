@@ -14,6 +14,8 @@ public class User {
         this.email = email;
     }
 
+    public User() {}
+
     public Long getId() {
         return this.id;
     }
@@ -48,11 +50,12 @@ public class User {
 
     @Override
     public String toString() {
-        return "Usuario{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                '}';
+        return id +
+                " | " +
+                username +
+                " | " +
+                password +
+                " | " +
+                email;
     }
 }
