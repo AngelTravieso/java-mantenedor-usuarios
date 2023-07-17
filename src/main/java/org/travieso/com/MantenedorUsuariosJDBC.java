@@ -1,44 +1,21 @@
 package org.travieso.com;
 
-import org.travieso.com.models.User;
-import org.travieso.com.repositories.UserRepository;
-import org.travieso.com.repositories.UserRepositoryImpl;
+import org.travieso.com.models.utils.UserService;
+
+import java.util.Scanner;
 
 public class MantenedorUsuariosJDBC {
     public static void main(String[] args) {
-        /*
-        User usuario1 = new User(1L, "angel", "1234", "correo@correo.com");
 
-        System.out.println("usuario1 = " + usuario1);
+        Scanner sc = new Scanner(System.in);
 
-         */
+        int opt = -1;
 
-        UserRepository<User> userRepository = new UserRepositoryImpl();
-
-        System.out.println("================== LIST OF USERS =======================");
-        userRepository.getUsers().forEach(System.out::println);
-        System.out.println("\n");
-
-        System.out.println("================== USER BY ID =======================");
-        System.out.println(userRepository.getUser(5L));
-        System.out.println("\n");
-
-        System.out.println("================== CREATE USER =======================");
-        User newUser = new User("yei", "alsq","correo5@correo.com");
-        userRepository.createUser(newUser);
-        System.out.println("\n");
-
-        System.out.println("================== LIST OF USERS =======================");
-        userRepository.getUsers().forEach(System.out::println);
-        System.out.println("\n");
-
-        System.out.println("================== DELETE USERS =======================");
-        userRepository.deleteUser(4L);
-        System.out.println("\n");
-
-        System.out.println("================== LIST OF USERS =======================");
-        userRepository.getUsers().forEach(System.out::println);
-        System.out.println("\n");
-
+        do {
+            UserService.printPrimaryMenu();
+            System.out.print("Option: ");
+            opt = Integer.parseInt(sc.nextLine());
+            UserService.performPrimaryMenuAction(opt);
+        } while(opt == -1);
     }
 }
