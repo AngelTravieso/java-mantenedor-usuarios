@@ -1,7 +1,7 @@
 package org.travieso.com.repositories;
 
 import org.travieso.com.models.User;
-import org.travieso.com.models.utils.ConnectionBD;
+import org.travieso.com.utils.ConnectionBD;
 
 import java.sql.*;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package org.travieso.com.models.utils;
+package org.travieso.com.utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

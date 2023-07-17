@@ -1,4 +1,4 @@
-package org.travieso.com.models.utils;
+package org.travieso.com.utils;
 
 import org.travieso.com.models.User;
 import org.travieso.com.repositories.*;

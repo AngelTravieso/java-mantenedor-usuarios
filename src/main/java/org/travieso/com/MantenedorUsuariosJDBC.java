@@ -1,6 +1,6 @@
 package org.travieso.com;
 
-import org.travieso.com.models.utils.UserService;
+import org.travieso.com.utils.UserService;
 
 import java.util.Scanner;
 
