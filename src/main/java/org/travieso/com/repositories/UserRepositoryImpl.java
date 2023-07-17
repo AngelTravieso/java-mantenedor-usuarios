@@ -62,7 +62,22 @@ public class UserRepositoryImpl implements UserRepository<User> {
 
     @Override
     public void createUser(User user) {
+        try(
+                Connection conn = getBDInstance();
+                PreparedStatement stmt = conn.prepareStatement("INSERT INTO usuarios (username, password, email) VALUES(?,?,?)")
+                ) {
 
+            stmt.setString(1, user.getUsername());
+            stmt.setString(2, user.getPassword());
+            stmt.setString(3, user.getEmail());
+
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        System.out.printf("User %s created...", user.getUsername());
     }
 
     @Override

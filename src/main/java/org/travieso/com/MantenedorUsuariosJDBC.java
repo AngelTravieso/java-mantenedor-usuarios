@@ -17,12 +17,22 @@ public class MantenedorUsuariosJDBC {
 
         System.out.println("================== LIST OF USERS =======================");
         userRepository.getUsers().forEach(System.out::println);
+        System.out.println("\n");
 
         System.out.println("================== USER BY ID =======================");
         System.out.println(userRepository.getUser(5L));
+        System.out.println("\n");
 
         System.out.println("================== CREATE USER =======================");
+        User newUser = new User("yei", "alsq","correo5@correo.com");
+        userRepository.createUser(newUser);
+        System.out.println("\n");
 
+        System.out.println("================== LIST OF USERS =======================");
+        userRepository.getUsers().forEach(System.out::println);
+        System.out.println("\n");
+
+        System.out.println("================== DELETE USERS =======================");
 
     }
 }
