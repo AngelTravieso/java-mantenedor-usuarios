@@ -81,9 +81,9 @@ public class UserService {
                 String password = sc.nextLine();
                 System.out.print("EMAIL: ");
                 String email = sc.nextLine();
-                newUser.setUsername(username);
-                newUser.setPassword(password);
-                newUser.setEmail(email);
+                newUser.setUsername(username.toLowerCase());
+                newUser.setPassword(Crypto.hashPassword(password));
+                newUser.setEmail(email.toLowerCase());
                 createUser(newUser);
                 printSecondaryMenu();
                 System.out.print("Option: ");

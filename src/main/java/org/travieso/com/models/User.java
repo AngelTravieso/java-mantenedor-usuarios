@@ -59,8 +59,8 @@ public class User {
         return id +
                 " | " +
                 username +
-                " | " +
-                password +
+                /*" | " +
+                password +*/
                 " | " +
                 email;
     }
