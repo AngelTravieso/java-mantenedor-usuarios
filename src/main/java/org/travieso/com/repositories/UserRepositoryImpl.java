@@ -82,6 +82,18 @@ public class UserRepositoryImpl implements UserRepository<User> {
 
     @Override
     public void deleteUser(Long id) {
+        try(
+                Connection conn = getBDInstance();
+                PreparedStatement stmt = conn.prepareStatement("DELETE FROM usuarios WHERE id=?");
+                ) {
+            stmt.setLong(1, id);
+            stmt.executeUpdate();
+
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("User deleted...");
 
     }
 

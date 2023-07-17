@@ -33,6 +33,12 @@ public class MantenedorUsuariosJDBC {
         System.out.println("\n");
 
         System.out.println("================== DELETE USERS =======================");
+        userRepository.deleteUser(4L);
+        System.out.println("\n");
+
+        System.out.println("================== LIST OF USERS =======================");
+        userRepository.getUsers().forEach(System.out::println);
+        System.out.println("\n");
 
     }
 }
